@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Called as root like this:
+#   MountWarden-WillMount "WillMount:Epoch:VolumePath"
+
+# Get volume path
+sv_ThisVolumePath="$(echo ${1} | cut -d":" -f3)"
+
+# Do something
+say "${sv_ThisVolumePath} will unmount."
