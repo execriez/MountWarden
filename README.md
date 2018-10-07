@@ -25,7 +25,7 @@ Download the MountWarden installation package here [MountWarden.pkg](https://raw
 
 The installer will install the following files and directories:
 
-	/Library/LaunchDaemons/com.github.execriez.mountwarden.plist
+	/Library/LaunchAgents/com.github.execriez.mountwarden.plist
 	/usr/MountWarden/
 	/usr/MountWarden/bin/
 	/usr/MountWarden/bin/MountWarden
@@ -53,7 +53,7 @@ These simple scripts use the "say" command to speak whenever a volume is mounted
 
 	#!/bin/bash
 	#
-	# Called as root like this:
+	# Called by MountWarden as user like this:
 	#   MountWarden-DidMount "DidMount:Epoch:VolumePath"
 	# i.e.
 	#   MountWarden-DidMount "DidMount:1538163950:/Volumes/MYFATDISK"
@@ -68,7 +68,7 @@ These simple scripts use the "say" command to speak whenever a volume is mounted
 
 	#!/bin/bash
 	#
-	# Called as root like this:
+	# Called by MountWarden as user like this:
 	#   MountWarden-WillMount "WillMount:Epoch:VolumePath"
 
 	# Get volume path
@@ -81,7 +81,7 @@ These simple scripts use the "say" command to speak whenever a volume is mounted
 
 	#!/bin/bash
 	#
-	# Called as root like this:
+	# Called by MountWarden as user like this:
 	#   MountWarden-DidUnmount "DidUnmount:Epoch:VolumePath"
 
 	# Get volume path
@@ -97,7 +97,7 @@ Download the MountWarden uninstaller package here [MountWarden-Uninstaller.pkg](
 
 The uninstaller will remove the following files and directories:
 
-	/Library/LaunchDaemons/com.github.execriez.mountwarden.plist
+	/Library/LaunchAgents/com.github.execriez.mountwarden.plist
 	/usr/MountWarden/
 
 After the uninstall everything goes back to normal, and volume mounting will not be tracked.
@@ -123,6 +123,10 @@ The installer writes to the following log file:
 You should check this log if there are issues when installing.
 
 ## History:
+
+1.0.2 - 07 OCT 2018
+
+* Changed from a LaunchDaemon to a LaunchAgent, so that it runs as the user that mounted the drive, rather than as root.
 
 1.0.1 - 28 SEP 2018
 

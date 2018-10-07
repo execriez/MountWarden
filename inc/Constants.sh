@@ -89,7 +89,7 @@ then
   GLB_sv_ProjectName="MountWarden"
   GLB_sv_ProjectInitials="MW"
   GLB_sv_ProjectDeveloper="com.github.execriez"
-  GLB_sv_ProjectVersion="1.0.1"
+  GLB_sv_ProjectVersion="1.0.2"
   GLB_sv_ProjectInstall="minimum"
 
   # ---

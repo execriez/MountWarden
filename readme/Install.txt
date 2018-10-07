@@ -6,7 +6,7 @@ Download the MountWarden installation package here:
 
 The installer will install the following files and directories:
 
-   /Library/LaunchDaemons/com.github.execriez.mountwarden.plist
+   /Library/LaunchAgents/com.github.execriez.mountwarden.plist
    /usr/MountWarden/
    /usr/MountWarden/bin/
    /usr/MountWarden/bin/MountWarden

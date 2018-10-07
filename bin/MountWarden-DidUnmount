@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Called as root like this:
+# Called by MountWarden as user like this:
 #   MountWarden-DidUnmount "DidUnmount:Epoch:VolumePath"
 
 # Get volume path

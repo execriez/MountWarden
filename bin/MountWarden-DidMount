@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Called as root like this:
+# Called by MountWarden as user like this:
 #   MountWarden-DidMount "DidMount:Epoch:VolumePath"
 # i.e.
 #   MountWarden-DidMount "DidMount:1538163950:/Volumes/MYFATDISK"
