@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>MountWarden.xcscheme_^#shared#^_</key>
+		<key>MountWarden.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>723CF63C281FD63300F08060</key>
+		<key>7247ABA4281F54FD00B69D0B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

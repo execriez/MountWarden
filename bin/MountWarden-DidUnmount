@@ -6,5 +6,5 @@
 # Get volume path
 sv_ThisVolumePath="$(echo ${1} | cut -d":" -f3)"
 
-# Do something
-say "${sv_ThisVolumePath} did unmount."
+# Do Something
+echo "$(date '+%d %b %Y %H:%M:%S %Z') DidUnmount - '${sv_ThisVolumePath}' did unmount" >> ~/Library/Logs/MountWarden.log

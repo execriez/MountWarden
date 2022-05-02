@@ -1,22 +1,24 @@
 INSTALLATION:
 
-Download the MountWarden installation package here:
+Open the Terminal app, and download the latest MountWarden.pkg installer to your desktop by typing the following command. 
 
-   https://raw.githubusercontent.com/execriez/MountWarden/master/SupportFiles/MountWarden.pkg
+	curl -k --silent --retry 3 --retry-max-time 6 --fail https://raw.githubusercontent.com/execriez/MountWarden/master/SupportFiles/MountWarden.pkg
+
+To install, double-click the downloaded package.
 
 The installer will install the following files and directories:
 
-   /Library/LaunchAgents/com.github.execriez.mountwarden.plist
-   /usr/MountWarden/
-   /usr/MountWarden/bin/
-   /usr/MountWarden/bin/MountWarden
-   /usr/MountWarden/bin/MountWarden-DidMount
-   /usr/MountWarden/bin/MountWarden-WillUnmount
-   /usr/MountWarden/bin/MountWarden-DidUnmount
+	/Library/LaunchAgents/com.github.execriez.mountwarden.plist
+	/usr/MountWarden/
+	/usr/MountWarden/bin/
+	/usr/MountWarden/bin/MountWarden
+	/usr/MountWarden/bin/MountWarden-DidMount
+	/usr/MountWarden/bin/MountWarden-WillUnmount
+	/usr/MountWarden/bin/MountWarden-DidUnmount
 
 There's no need to reboot.
 
-After installation, your computer will speak whenever a volume is mounted or unmounted.
+After installation, your computer will speak whenever a volume is mounted or unmounted. 
 
 If the installer fails you should check the installation logs.
 
@@ -29,17 +31,17 @@ After installation, three simple example scripts can be found in the following l
    /usr/MountWarden/bin/MountWarden-WillUnmount
    /usr/MountWarden/bin/MountWarden-DidUnmount
 
-These simple scripts use the "say" command to speak whenever a volume is mounted or unmounted. Modify the scripts to alter this default behaviour.
+These scripts simply write to the log file ~/Library/Logs/MountWarden.log whenever the ConsoleUser changes. Modify the scripts to your own needs.
 
 
 LOGS:
 
-The MountWarden binary writes to the following log file:
+The example scripts write to the following log file:
 
-   /var/log/systemlog
+	~/Library/Logs/MountWarden.log
 
 The installer writes to the following log file:
 
-   /Library/Logs/com.github.execriez.mountwarden.log
-
+	/Library/Logs/com.github.execriez.mountwarden.log
+  
 You should check this log if there are issues when installing.

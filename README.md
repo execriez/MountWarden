@@ -16,12 +16,16 @@ MountWarden consists of the following components:
  
 MountWarden-DidMount, MountWarden-UWillUnmount and MountWarden-DidUnmount are bash scripts.
 
-These example scripts use the "say" command to speak whenever there is a mount event. You should customise the scripts to your own needs.
+The example scripts simply write to a log file in ~/Library/Logs. You should customise the scripts to your own needs.
 
 
 ## How to install:
 
-Download the MountWarden installation package here [MountWarden.pkg](https://raw.githubusercontent.com/execriez/MountWarden/master/SupportFiles/MountWarden.pkg)
+Open the Terminal app, and download the latest [MountWarden.pkg](https://raw.githubusercontent.com/execriez/MountWarden/master/SupportFiles/MountWarden.pkg) installer to your desktop by typing the following command. 
+
+	curl -k --silent --retry 3 --retry-max-time 6 --fail https://raw.githubusercontent.com/execriez/MountWarden/master/SupportFiles/MountWarden.pkg
+
+To install, double-click the downloaded package.
 
 The installer will install the following files and directories:
 
@@ -47,7 +51,7 @@ After installation, three simple example scripts can be found in the following l
 	/usr/MountWarden/bin/MountWarden-WillUnmount
 	/usr/MountWarden/bin/MountWarden-DidUnmount
 
-These simple scripts use the "say" command to speak whenever a volume is mounted or unmounted. Modify the scripts to alter this default behaviour.
+These scripts simply write to the log file ~/Library/Logs/MountWarden.log whenever the ConsoleUser changes. Modify the scripts to your own needs.
 
 **MountWarden-DidMount**
 
@@ -57,25 +61,25 @@ These simple scripts use the "say" command to speak whenever a volume is mounted
 	#   MountWarden-DidMount "DidMount:Epoch:VolumePath"
 	# i.e.
 	#   MountWarden-DidMount "DidMount:1538163950:/Volumes/MYFATDISK"
-
+	
 	# Get volume path
 	sv_ThisVolumePath="$(echo ${1} | cut -d":" -f3)"
-
-	# Do something
-	say "${sv_ThisVolumePath} did mount."
+	
+	# Do Something
+	echo "$(date '+%d %b %Y %H:%M:%S %Z') DidMount - '${sv_ThisVolumePath}' did mount" >> /tmp/MountWarden.log
 
 **MountWarden-WillUnmount**
 
 	#!/bin/bash
 	#
 	# Called by MountWarden as user like this:
-	#   MountWarden-WillMount "WillMount:Epoch:VolumePath"
-
+	#   MountWarden-WillUnmount "WillUnmount:Epoch:VolumePath"
+	
 	# Get volume path
 	sv_ThisVolumePath="$(echo ${1} | cut -d":" -f3)"
-
-	# Do something
-	say "${sv_ThisVolumePath} will unmount."
+	
+	# Do Something
+	echo "$(date '+%d %b %Y %H:%M:%S %Z') WillUnmount - '${sv_ThisVolumePath}' will unmount" >> /tmp/MountWarden.log
 
 **MountWarden-DidUnmount**
 
@@ -83,17 +87,21 @@ These simple scripts use the "say" command to speak whenever a volume is mounted
 	#
 	# Called by MountWarden as user like this:
 	#   MountWarden-DidUnmount "DidUnmount:Epoch:VolumePath"
-
+	
 	# Get volume path
 	sv_ThisVolumePath="$(echo ${1} | cut -d":" -f3)"
-
-	# Do something
-	say "${sv_ThisVolumePath} did unmount."
+	
+	# Do Something
+	echo "$(date '+%d %b %Y %H:%M:%S %Z') DidUnmount - '${sv_ThisVolumePath}' did unmount" >> /tmp/MountWarden.log
 
 
 ## How to uninstall:
 
-Download the MountWarden uninstaller package here [MountWarden-Uninstaller.pkg](https://raw.githubusercontent.com/execriez/MountWarden/master/SupportFiles/MountWarden-Uninstaller.pkg)
+Open the Terminal app, and download the latest [MountWarden-Uninstaller.pkg](https://raw.githubusercontent.com/execriez/MountWarden/master/SupportFiles/MountWarden-Uninstaller.pkg) uninstaller to your desktop by typing the following command. 
+
+	curl -k --silent --retry 3 --retry-max-time 6 --fail https://raw.githubusercontent.com/execriez/MountWarden/master/SupportFiles/MountWarden-Uninstaller.pkg --output ~/Desktop/ConsoleUserWarden-Uninstaller.pkg
+
+To uninstall, double-click the downloaded package.
 
 The uninstaller will remove the following files and directories:
 
@@ -106,15 +114,9 @@ There's no need to reboot.
 
 ## Logs:
 
-The MountWarden binary writes to the following log file:
+The example scripts write to the following log file:
 
-	/var/log/systemlog
-  
-The following is an example of a typical system log file entry:
-
-	Sep 24 22:08:30 mymac-01 MountWarden[97555]: Did mount: '/Volumes/DELB4LOGOUT'
-	Sep 24 22:08:40 mymac-01 MountWarden[97555]: Will unmount: '/Volumes/DELB4LOGOUT'
-	Sep 24 22:08:40 mymac-01 MountWarden[97555]: Did unmount: '/Volumes/DELB4LOGOUT'
+	~/Library/Logs/MountWarden.log
 
 The installer writes to the following log file:
 
@@ -123,6 +125,14 @@ The installer writes to the following log file:
 You should check this log if there are issues when installing.
 
 ## History:
+
+1.0.3 - 02 MAY 2022
+
+* Compiled as a fat binary to support both Apple Silicon and Intel Chipsets. This version requires MacOS 10.9 or later.
+
+* The example scripts now just write to a log file. Previously they made use of the "say" command.
+
+* The package creation and installation code has been aligned with other "Warden" projects.
 
 1.0.2 - 07 OCT 2018
 

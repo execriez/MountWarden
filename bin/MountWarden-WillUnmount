@@ -1,10 +1,10 @@
 #!/bin/bash
 #
 # Called by MountWarden as user like this:
-#   MountWarden-WillMount "WillMount:Epoch:VolumePath"
+#   MountWarden-WillUnmount "WillUnmount:Epoch:VolumePath"
 
 # Get volume path
 sv_ThisVolumePath="$(echo ${1} | cut -d":" -f3)"
 
-# Do something
-say "${sv_ThisVolumePath} will unmount."
+# Do Something
+echo "$(date '+%d %b %Y %H:%M:%S %Z') WillUnmount - '${sv_ThisVolumePath}' will unmount" >> ~/Library/Logs/MountWarden.log

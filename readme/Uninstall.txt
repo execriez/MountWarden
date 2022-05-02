@@ -1,15 +1,16 @@
 UNINSTALLING:
 
-Download the MountWarden uninstaller package here:
+Open the Terminal app, and download the latest MountWarden-Uninstaller.pkg uninstaller to your desktop by typing the following command. 
 
-   https://raw.githubusercontent.com/execriez/MountWarden/master/SupportFiles/MountWarden-Uninstaller.pkg
+	curl -k --silent --retry 3 --retry-max-time 6 --fail https://raw.githubusercontent.com/execriez/MountWarden/master/SupportFiles/MountWarden-Uninstaller.pkg --output ~/Desktop/ConsoleUserWarden-Uninstaller.pkg
+
+To uninstall, double-click the downloaded package.
 
 The uninstaller will remove the following files and directories:
 
-   /Library/LaunchAgents/com.github.execriez.mountwarden.plist
-   /usr/MountWarden/
+	/Library/LaunchAgents/com.github.execriez.mountwarden.plist
+	/usr/MountWarden/
 
 After the uninstall everything goes back to normal, and volume mounting will not be tracked.
 
 There's no need to reboot.
-
